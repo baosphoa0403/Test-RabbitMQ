@@ -1,0 +1,57 @@
+{
+  "name": "estjs-kafka",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/estjs-kafka/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/estjs-kafka",
+        "main": "apps/estjs-kafka/src/main.ts",
+        "tsConfig": "apps/estjs-kafka/tsconfig.app.json",
+        "assets": ["apps/estjs-kafka/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/estjs-kafka/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "estjs-kafka:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "estjs-kafka:build:development"
+        },
+        "production": {
+          "buildTarget": "estjs-kafka:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/estjs-kafka/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/estjs-kafka/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

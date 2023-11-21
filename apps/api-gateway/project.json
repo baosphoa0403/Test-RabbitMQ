@@ -1,7 +1,7 @@
 {
-  "name": "estjs-kafka",
+  "name": "api-gateway",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/estjs-kafka/src",
+  "sourceRoot": "apps/api-gateway/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,12 +11,12 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/estjs-kafka",
-        "main": "apps/estjs-kafka/src/main.ts",
-        "tsConfig": "apps/estjs-kafka/tsconfig.app.json",
-        "assets": ["apps/estjs-kafka/src/assets"],
+        "outputPath": "dist/apps/api-gateway",
+        "main": "apps/api-gateway/src/main.ts",
+        "tsConfig": "apps/api-gateway/tsconfig.app.json",
+        "assets": ["apps/api-gateway/src/assets"],
         "isolatedConfig": true,
-        "webpackConfig": "apps/estjs-kafka/webpack.config.js"
+        "webpackConfig": "apps/api-gateway/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -27,14 +27,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "estjs-kafka:build"
+        "buildTarget": "api-gateway:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "estjs-kafka:build:development"
+          "buildTarget": "api-gateway:build:development"
         },
         "production": {
-          "buildTarget": "estjs-kafka:build:production"
+          "buildTarget": "api-gateway:build:production"
         }
       }
     },
@@ -42,14 +42,14 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/estjs-kafka/**/*.ts"]
+        "lintFilePatterns": ["apps/api-gateway/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/estjs-kafka/jest.config.ts"
+        "jestConfig": "apps/api-gateway/jest.config.ts"
       }
     }
   },

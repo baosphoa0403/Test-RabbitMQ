@@ -1,0 +1,57 @@
+{
+  "name": "api-product",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api-product/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/api-product",
+        "main": "apps/api-product/src/main.ts",
+        "tsConfig": "apps/api-product/tsconfig.app.json",
+        "assets": ["apps/api-product/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/api-product/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "api-product:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "api-product:build:development"
+        },
+        "production": {
+          "buildTarget": "api-product:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/api-product/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/api-product/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

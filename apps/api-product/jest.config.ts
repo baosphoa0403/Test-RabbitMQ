@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'estjs-kafka',
+  displayName: 'api-product',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/estjs-kafka',
+  coverageDirectory: '../../coverage/apps/api-product',
 };

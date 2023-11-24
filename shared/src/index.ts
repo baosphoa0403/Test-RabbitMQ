@@ -1,2 +1,1 @@
-export * from './lib/shared.module';
-export * from './lib/constant';
+export * from './lib';

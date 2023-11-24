@@ -18,7 +18,7 @@ async function bootstrap() {
       options: {
         urls: [URL_RABBIT_MQ],
         queue: NAME_QUEUE.auth_queue,
-        noAck: false,
+        noAck: true,
         //  Queue name which your server will listen to
         queueOptions: {
           durable: false,

@@ -1,0 +1,10 @@
+ curl -X POST -H "Content-Type: application/json" -d '{
+  "username": "giabao",
+  "password": "1234",
+  "fullName": "dasdasd"
+}' localhost:3000/api/auth/sign-up
+
+docker exec 0a0affc1cd2e curl -XGET
+-u guest:guest http://localhost:15672/api/queues/%2f/auth_queue/get
+
+curl -XGET -u guest:guest http://localhost:15672/api/queues/%2f/auth_queue/get

@@ -12,3 +12,13 @@ export const NAME_QUEUE = {
   auth_queue: 'auth_queue',
   product_queue: 'product_queue',
 };
+
+export const ROOT_CONTROLLER = {
+  AUTH: 'auth',
+  USER: 'user',
+};
+
+export enum ROLE {
+  USER = 'USER',
+  ADMIN = 'ADMIN',
+}

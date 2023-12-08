@@ -5,7 +5,6 @@ export const databaseProviders = [
   {
     provide: 'DATA_SOURCE',
     useFactory: async () => {
-      // You can inject config service to provide dynamic DataSourceOptions
       const dataSource = new DataSource({
         type: 'mysql',
         host: 'localhost',
@@ -14,14 +13,12 @@ export const databaseProviders = [
         password: '123',
         database: 'shop',
         entities: Object.values(entities),
-        synchronize: false,
+        synchronize: true,
       });
       try {
-        console.log(__dirname);
-
         if (!dataSource.isInitialized) {
           await dataSource.initialize();
-          console.log('connect database successfully');
+          console.info('connect database successfully');
         }
       } catch (error) {
         console.log('connect database error');

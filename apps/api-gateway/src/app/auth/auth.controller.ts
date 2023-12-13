@@ -1,5 +1,9 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
-import { NAME_SERVICE, ROOT_CONTROLLER } from '@test-kafka/shared';
+import {
+  NAME_SERVICE,
+  PATTERN_SERVICE,
+  ROOT_CONTROLLER,
+} from '@test-kafka/shared';
 import { SignUpRequestDto } from './dto/sign-up.request.dto';
 import { ClientProxy } from '@nestjs/microservices';
 
@@ -12,7 +16,7 @@ export class AuthController {
   @Post('sign-up')
   async signUp(@Body() signUpRequestDto: SignUpRequestDto) {
     this.clientAuth
-      .send('SIGN_UP_USER', JSON.stringify(signUpRequestDto))
+      .send(PATTERN_SERVICE.AUTH.SIGN_UP_USER, JSON.stringify(signUpRequestDto))
       .subscribe((value) => {
         console.log('response = ' + value);
       });

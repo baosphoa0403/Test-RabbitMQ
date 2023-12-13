@@ -1,10 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-// import { ROLE } from '../../constant';
+import { ROLE } from '../../constant';
 
-@Entity()
+@Entity('user')
 export class UserEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   username: string;
@@ -15,6 +15,6 @@ export class UserEntity {
   @Column()
   fullName: string;
 
-  // @Column({ enum: ROLE })
-  // role: ROLE;
+  @Column({ enum: ROLE, type: 'enum', default: ROLE.USER })
+  role: ROLE;
 }

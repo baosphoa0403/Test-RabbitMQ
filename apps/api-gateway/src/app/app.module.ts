@@ -5,13 +5,11 @@ import { AuthModule } from './auth/auth.module';
 import { DatabaseModule } from '@test-kafka/shared';
 import { ConfigModule } from '@nestjs/config';
 import configuration from 'shared/src/lib/config/configuration';
-
 @Module({
   imports: [
     AuthModule,
     DatabaseModule,
     ConfigModule.forRoot({
-      isGlobal: true,
       load: [configuration],
     }),
   ],

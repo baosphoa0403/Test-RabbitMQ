@@ -16,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@test-kafka/shared": ["shared/src/index.ts"]
+      "@test-kafka/shared": ["shared/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]
